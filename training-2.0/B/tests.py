@@ -14,7 +14,7 @@ for case, expected in cases:
         result = get_shortest_route(*case)
         assert result == expected
         print('OK')
-    except AssertionError as e:
+    except AssertionError:
         print('Given "{}".'.format(case))
         print('Got "{}".'.format(result))
         print('Expected "{}"'.format(expected))

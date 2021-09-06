@@ -16,7 +16,7 @@ for case, expected in cases:
         result = check_date_is_unambiguous(*case)
         assert result == expected
         print('OK')
-    except AssertionError as e:
+    except AssertionError:
         print('Given "{}".'.format(case))
         print('Got "{}".'.format(result))
         print('Expected "{}"'.format(expected))

@@ -15,7 +15,7 @@ for case, expected in cases:
         result = get_result_code(*case)
         assert result == expected
         print('OK')
-    except AssertionError as e:
+    except AssertionError:
         print('Given "{}".'.format(case))
         print('Got "{}".'.format(result))
         print('Expected "{}"'.format(expected))

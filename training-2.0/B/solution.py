@@ -8,4 +8,3 @@ if __name__ == '__main__':
     total, start, finish = map(int, input().split())
 
     print(get_shortest_route(total, start, finish))
-

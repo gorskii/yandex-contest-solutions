@@ -17,7 +17,7 @@ for case, expected in cases:
         result = get_school_coordinates(case)
         assert result in expected
         print('OK')
-    except AssertionError as e:
+    except AssertionError:
         print('Given "{}".'.format(case))
         print('Got "{}".'.format(result))
         print('Expected "{}"'.format(expected))
