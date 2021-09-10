@@ -23,20 +23,12 @@ def get_point_status(d, x, y):
     B = Point(d, 0)
     C = Point(0, d)
 
-    if (x >= 0 and y >= 0) and ((x - B.x) * (C.y - B.y) - (y - B.y) * (C.x - B.x) <= 0):
+    if x >= 0 and y >= 0 and x + y <= d:
         return 0
 
-    status = -1
-    minimum = 10000000
-    nearest_vertex = -1
-    for i, vertex in enumerate((A, B, C)):
-        dist = Point(x, y) - vertex
-        if dist < minimum:
-            minimum = dist
-            nearest_vertex = i + 1
-    status = nearest_vertex
-
-    return status
+    point = Point(x, y)
+    distances = [(point - A, 1), (point - B, 2), (point - C, 3)]
+    return min(distances)[1]
 
 
 if __name__ == '__main__':
