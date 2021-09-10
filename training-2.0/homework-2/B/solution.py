@@ -8,30 +8,23 @@ def get_max_store_distance(buildings):
     1 - house
     2 - store
     """
-    max_distance = 0
-    for i in range(0, len(buildings)):
+    dist_to_left_store = [0] * len(buildings)
+    # given 10 buildings in problem statement, we make 'infinite' distance for the leftmost house
+    store_position = -100
+    for i in range(len(buildings)):
+        if buildings[i] == 2:
+            store_position = i
         if buildings[i] == 1:
-            left, right = i-1, i+1
-            found_store = False
-            while left >= 0 and right < len(buildings):
-                if buildings[left] == 2 or buildings[right] == 2:
-                    max_distance = max(max_distance, right - i)
-                    found_store = True
-                    break
-                left -= 1
-                right += 1
-            while not found_store and left >= 0:
-                if buildings[left] == 2:
-                    max_distance = max(max_distance, i - left)
-                    found_store = True
-                    break
-                left -= 1
-            while not found_store and right < len(buildings):
-                if buildings[right] == 2:
-                    max_distance = max(max_distance, right - i)
-                    found_store = True
-                    break
-                right += 1
+            dist_to_left_store[i] = i - store_position
+    # 'infinite' distance for the rightmost house, aswell
+    store_position = 100
+    max_distance = 0
+    for i in range(len(buildings)-1, -1, -1):
+        if buildings[i] == 2:
+            store_position = i
+        if buildings[i] == 1:
+            min_distance = min(dist_to_left_store[i], store_position - i)
+            max_distance = max(max_distance, min_distance)
     return max_distance
 
 
