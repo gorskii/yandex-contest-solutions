@@ -1,7 +1,7 @@
 def get_shortest_route(total, start, finish):
-    if start > finish:
-        start, finish = finish, start
-    return min(finish - start - 1, start + (total - finish) - 1)
+    forward = abs(finish - start) - 1
+    backwards = total - forward - 2
+    return min(forward, backwards)
 
 
 if __name__ == '__main__':
